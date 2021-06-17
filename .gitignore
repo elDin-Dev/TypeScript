@@ -5,7 +5,7 @@ bootstrap.json
 bootstrap.jsonp
 build/
 classic.json
-classic.jsonp
+classic.jsonpnpm
 ext/
 modern.json
 modern.jsonp
