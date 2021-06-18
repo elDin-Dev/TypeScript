@@ -1,37 +1,15 @@
-
-//Explicit object type creation
-/*const person: {
-    name: string;
-    age: number
-} = {
-    name: 'Alex',
-    age: 45
+function combine(input1: number | string, input2: number | string) {
+    //yuou can specify as many types as you want using | 
+    let result:number | string;
+    if ( (typeof input1==='number') && (typeof input2==='number'))
+    {
+        result= input1 + input2
+    } else {
+        result= input1.toString() + input2.toString();
+    }
     
-}*/
-
-//leave typeScript infer the types.
-
-
-const ADMIN=0;
-
-enum ROLE {ADMIN, READ_ONLY, AUTHOR}
-
-const person = {
-    name: 'Alex',
-    age: 45,
-    hobbies: ['Sports', 'Cooking'],
-    //role: [2,'author']
-    role: ROLE.ADMIN
+    return result;
 }
 
-//person.role.push('admin');
-person.role[1]=10;
-console.log(person.role)
-
-let favouriteHobbies: string[];
-favouriteHobbies = ['a']
-console.log(person.name);
-
-for (const h of person.hobbies ) {
-    console.log(h.toLocaleUpperCase());
-}
+console.log(combine(5,8));
+console.log(combine("5",8));
