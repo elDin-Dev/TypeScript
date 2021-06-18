@@ -8,13 +8,21 @@
     
 }*/
 //leave typeScript infer the types.
+var ADMIN = 0;
+var ROLE;
+(function (ROLE) {
+    ROLE[ROLE["ADMIN"] = 0] = "ADMIN";
+    ROLE[ROLE["READ_ONLY"] = 1] = "READ_ONLY";
+    ROLE[ROLE["AUTHOR"] = 2] = "AUTHOR";
+})(ROLE || (ROLE = {}));
 var person = {
     name: 'Alex',
     age: 45,
     hobbies: ['Sports', 'Cooking'],
-    role: [2, 'author']
+    //role: [2,'author']
+    role: ROLE.ADMIN
 };
-person.role.push('admin');
+//person.role.push('admin');
 person.role[1] = 10;
 console.log(person.role);
 var favouriteHobbies;
