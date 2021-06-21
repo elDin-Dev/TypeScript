@@ -1,7 +1,10 @@
 enum AsTypes {AS_NUMBER = 5, AS_STRING=10};
 enum ROLE {DEV=3, READ_ONLY='a', AUTHOR=9}
 
-function combine(input1: number | string, input2: number | string, type: 'as-numbers' | 'as-strings') {
+type Combinable = number | string;
+type CombinableDescriptor = 'as-numbers' | 'as-strings';
+
+function combine(input1: Combinable, input2: Combinable, type: CombinableDescriptor ) {
     //yuou can specify as many types as you want using | 
     let result:number | string;
     if ( (typeof input1==='number') && (typeof input2==='number'))
