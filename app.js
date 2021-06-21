@@ -1,1 +1,2 @@
-console.log("code here...");
+"use strict";
+console.log("code aaa...");
