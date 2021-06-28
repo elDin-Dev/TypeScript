@@ -1,5 +1,9 @@
 "use strict";
-var button = document.querySelector("button");
-button.addEventListener('click', function () {
-    console.log("CLICKED!");
-});
+var Department = (function () {
+    function Department(n) {
+        this.name = n;
+    }
+    return Department;
+}());
+var accounting = new Department('Accounting');
+console.log(accounting);
