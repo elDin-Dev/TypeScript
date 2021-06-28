@@ -1,9 +1,22 @@
 "use strict";
-var Department = (function () {
-    function Department(n) {
+class Department {
+    constructor(n) {
+        this.employees = [];
         this.name = n;
     }
-    return Department;
-}());
-var accounting = new Department('Accounting');
-console.log(accounting);
+    describe() {
+        console.log("Department describe:" + this.name);
+    }
+    addEmployee(employee) {
+        this.employees.push(employee);
+    }
+    printEmployeeInfo() {
+        console.log(this.employees.length);
+        console.log(this.employees);
+    }
+}
+const accounting = new Department('Accounting');
+accounting.addEmployee("alex");
+accounting.addEmployee("vicent");
+accounting.describe();
+accounting.printEmployeeInfo();
