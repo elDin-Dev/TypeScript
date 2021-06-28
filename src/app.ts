@@ -3,15 +3,16 @@ class Department {
 
     private employees: string[]= [];
 
-    constructor(private id: string, public name: string) {
+    constructor(private readonly id: string, public name: string) {
         //this.name=name;
     }
 
     describe(this: Department) {
-        console.log("Department describe:" + this.name)
+        console.log(`Department describe: (${this.id}): ${this.name}`);
     }
 
     addEmployee(employee: string) {
+        //this.id=2;
         this.employees.push(employee);
     }
 
@@ -35,6 +36,6 @@ accounting.printEmployeeInfo();
 /*const newAccounting = {name: "Dummy", describe: accounting.describe };
 newAccounting.describe();*/
 
-accounting.employees[0]="pepxe";
+//accounting.employees[0]="pepxe";
 
 
