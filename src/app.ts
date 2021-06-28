@@ -1,10 +1,10 @@
 class Department {
-    name: string;
+    //private name: string;
 
-    employees: string[]= [];
+    private employees: string[]= [];
 
-    constructor(n: string) {
-        this.name=n;
+    constructor(private id: string, public name: string) {
+        //this.name=name;
     }
 
     describe(this: Department) {
@@ -23,7 +23,7 @@ class Department {
 
 // creating objects
 
-const accounting = new Department('Accounting');
+const accounting = new Department('1','Accounting');
 
 accounting.addEmployee("alex");
 accounting.addEmployee("vicent");
@@ -34,5 +34,7 @@ accounting.printEmployeeInfo();
 
 /*const newAccounting = {name: "Dummy", describe: accounting.describe };
 newAccounting.describe();*/
+
+accounting.employees[0]="pepxe";
 
 

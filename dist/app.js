@@ -20,3 +20,6 @@ accounting.addEmployee("alex");
 accounting.addEmployee("vicent");
 accounting.describe();
 accounting.printEmployeeInfo();
+
+
+accounting.employees[0]="pepe";
