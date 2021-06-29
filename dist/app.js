@@ -16,12 +16,10 @@ class Department {
         console.log(this.employees);
     }
 }
-const accounting = new Department('1', 'Accounting');
+class ITDepartment extends Department {
+}
+const accounting = new ITDepartment('1', 'Accounting');
 accounting.addEmployee("alex");
 accounting.addEmployee("vicent");
 accounting.describe();
 accounting.printEmployeeInfo();
-
-class ITDepartment extends Department{
-
-}
