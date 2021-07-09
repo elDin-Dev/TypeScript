@@ -1,4 +1,6 @@
 class Department {
+    static fiscalYear = 2020;
+
     //private name: string;
 
     protected employees: string[]= [];
@@ -19,6 +21,10 @@ class Department {
     printEmployeeInfo() {
         console.log(this.employees.length);
         console.log(this.employees);
+    }
+
+    static createEmployee(name: string){
+        return  {name: name};
     }
 }
 
@@ -74,6 +80,9 @@ class AccountingDepartment extends Department {
     }
 }
 // creating objects
+
+const employee1 = Department.createEmployee(`David`);
+console.log("employee1:" ,employee1, "fiscal year:", Department.fiscalYear);
 
 const itDept = new ITDepartment('1', ['Alex']);
 
