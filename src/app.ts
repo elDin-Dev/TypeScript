@@ -121,7 +121,14 @@ moveAnimal({type: 'Bird', flyingSpeed:50});
 //Type casting #1
 //const userInput = <HTMLInputElement>document.getElementById("user-input");
 
-//Type casting #2
-const userInput = document.getElementById("user-input")! as HTMLInputElement ;
+//Type casting #2 !means=never null
+//const userInput = document.getElementById("user-input")! as HTMLInputElement ;
+//userInput.value="hi there!";
 
-userInput.value="hi there!";
+//Type casting #3
+const userInput = document.getElementById("user-input")
+if (userInput) {
+    (userInput as HTMLInputElement).value =  "hi there!";
+}
+
+
