@@ -85,3 +85,39 @@ function useVehicle(v: Vehicle) {
 
 useVehicle(v1);
 useVehicle(v2);
+
+interface Bird {
+    type: 'Bird';
+    flyingSpeed : number;
+    
+}
+interface Horse {
+    type: 'Horse';
+    runningSpeed : number;
+    
+}
+
+type Animal=  Bird | Horse;
+
+//Discrimination using a common property
+function moveAnimal(a: Animal ){
+    /*
+    if ('flyingSpeed' in a ){
+        console.log('Moving with speed:' + a.flyingSpeed);
+    }
+    */
+   let speed;
+
+   switch (a.type) {
+     case "Bird":
+       speed = a.flyingSpeed;
+       break;
+     case "Horse":
+       speed = a.runningSpeed;
+       break;
+   }
+
+   console.log('Moving with speed:' + speed);
+}
+
+moveAnimal({type: 'Bird', flyingSpeed:50});
