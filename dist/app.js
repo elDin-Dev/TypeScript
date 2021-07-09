@@ -1,8 +1,4 @@
 "use strict";
-var button = document.querySelector("button");
-button.addEventListener('click', function () {
-    console.log("CLICKED!");
-});
 var e1 = {
     name: 'Alex',
     privileges: ['create-server'],
@@ -67,3 +63,5 @@ function moveAnimal(a) {
     console.log('Moving with speed:' + speed);
 }
 moveAnimal({ type: 'Bird', flyingSpeed: 50 });
+var userInput = document.getElementById("user-input");
+userInput.value = "hi there!";

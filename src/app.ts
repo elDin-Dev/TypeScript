@@ -1,10 +1,3 @@
-const button = document.querySelector("button")!;
-
-button.addEventListener('click', () => {
-    console.log("CLICKED!");
-});
-
-
 type Admin = {
     name: string;
     privileges: string[];
@@ -121,3 +114,14 @@ function moveAnimal(a: Animal ){
 }
 
 moveAnimal({type: 'Bird', flyingSpeed:50});
+
+//const paragraph = document.querySelector("p");
+//const paragraph = document.querySelector("message-output");
+
+//Type casting #1
+//const userInput = <HTMLInputElement>document.getElementById("user-input");
+
+//Type casting #2
+const userInput = document.getElementById("user-input")! as HTMLInputElement ;
+
+userInput.value="hi there!";
