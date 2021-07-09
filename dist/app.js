@@ -17,9 +17,41 @@ class Department {
     }
 }
 class ITDepartment extends Department {
+    constructor(id, admins) {
+        super(id, 'IT');
+        this.admins = admins;
+    }
 }
-const accounting = new ITDepartment('1', 'Accounting');
-accounting.addEmployee("alex");
-accounting.addEmployee("vicent");
-accounting.describe();
-accounting.printEmployeeInfo();
+class AccountingDepartment extends Department {
+    constructor(id, reports) {
+        super(id, 'Accounting');
+        this.reports = reports;
+    }
+    addReport(text) {
+        this.reports.push(text);
+    }
+    printReports() {
+        console.log(this.reports);
+    }
+    addEmployee(name) {
+        if (name === 'alex') {
+            return;
+        }
+        else {
+            this.employees.push(name);
+        }
+    }
+}
+const itDept = new ITDepartment('1', ['Alex']);
+itDept.addEmployee("alex");
+itDept.addEmployee("vicent");
+itDept.describe();
+itDept.printEmployeeInfo();
+console.log("IT Dept:", itDept);
+console.log("------------------------------");
+const account = new AccountingDepartment('Acc2', []);
+account.addReport("everything is ok... so far.");
+account.printReports();
+account.addEmployee('alex');
+account.addEmployee('vicente');
+console.log("printEmployeeInfo", account.printEmployeeInfo());

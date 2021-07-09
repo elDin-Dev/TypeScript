@@ -1,7 +1,7 @@
 class Department {
     //private name: string;
 
-    private employees: string[]= [];
+    protected employees: string[]= [];
 
     constructor(private readonly id: string, public name: string) {
         //this.name=name;
@@ -24,21 +24,61 @@ class Department {
 
 class ITDepartment extends Department {
 
+        admins: string[]
+        constructor(id:string, admins: string[]) {
+            super(id, 'IT');
+            this.admins=admins
+
+        }
+}
+
+class AccountingDepartment extends Department {
+
+    constructor(id:string, private reports: string[]) {
+        super(id, 'Accounting');
+    }
+
+    addReport(text: string){
+        this.reports.push(text);
+    }
+
+    printReports() {
+        console.log(this.reports);
+    }
+
+    addEmployee(name: string){
+        if (name==='alex') {
+            return
+        }
+        else{
+            this.employees.push(name)
+        }
+    }
 }
 // creating objects
 
-const accounting = new ITDepartment('1','Accounting');
+const itDept = new ITDepartment('1', ['Alex']);
 
-accounting.addEmployee("alex");
-accounting.addEmployee("vicent");
+itDept.addEmployee("alex");
+itDept.addEmployee("vicent");
 
-accounting.describe()
+itDept.describe()
 
-accounting.printEmployeeInfo();
+itDept.printEmployeeInfo();
+
+console.log("IT Dept:",itDept);
 
 /*const newAccounting = {name: "Dummy", describe: accounting.describe };
 newAccounting.describe();*/
 
 //accounting.employees[0]="pepxe";
 
+console.log("------------------------------");
 
+
+const account= new AccountingDepartment('Acc2', []);
+account.addReport("everything is ok... so far.");
+account.printReports();
+account.addEmployee('alex');
+account.addEmployee('vicente');
+console.log("printEmployeeInfo",account.printEmployeeInfo());
