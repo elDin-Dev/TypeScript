@@ -51,3 +51,11 @@ textStorage.addItem('Vicente');
 textStorage.removeItem('Alex');
 console.log(textStorage.getItems());
 var numberStorage = new DataStorage();
+function createCourseGoal(title, description, date) {
+    var courseGoal = {};
+    courseGoal.title = title;
+    courseGoal.description = description;
+    courseGoal.completeUntil = date;
+    return courseGoal;
+}
+var namesArr = ['alex', 'vicent'];
