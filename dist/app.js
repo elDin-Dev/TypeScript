@@ -15,6 +15,9 @@ var fetchUserData = {
     job: { title: 'CEO', description: 'My company' }
 };
 console.log((_a = fetchUserData === null || fetchUserData === void 0 ? void 0 : fetchUserData.job) === null || _a === void 0 ? void 0 : _a.title);
+var userInputData = undefined;
+var storedData = userInputData !== null && userInputData !== void 0 ? userInputData : 'DEFAULT';
+console.log(storedData);
 var userInput = document.getElementById("user-input");
 if (userInput) {
     userInput.value = "hi there!";

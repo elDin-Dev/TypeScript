@@ -47,6 +47,11 @@ const fetchUserData = {
 
 console.log(fetchUserData?.job?.title);
 
+// null colaescing
+
+const userInputData = undefined; // '', null test it!
+const storedData = userInputData ?? 'DEFAULT';
+console.log(storedData);
 // type UnknownEmployee = Employee | Admin;
 
 // function printEmployeeInformation(emp: UnknownEmployee)
