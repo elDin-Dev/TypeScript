@@ -6,8 +6,20 @@ function Logger(logString: string) {
     
     }
 }
+function WithTemplate(template: string, hookId : string) {
+    return function(constructor: any){
 
-@Logger('LOGGING - PERSON')
+        const p = new constructor();
+        const hookEl = document.getElementById(hookId);
+        if (hookEl){
+            
+            hookEl.innerHTML=template
+            hookEl.querySelector('h1')!.textContent=p.name;
+        }
+    }
+}
+
+@WithTemplate('<h1>My person Object</h1>', 'app')
 class Person {
     name= 'Max';
 
