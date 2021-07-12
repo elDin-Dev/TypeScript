@@ -18,4 +18,7 @@ function countAndDescribe(element) {
 }
 console.log(countAndDescribe(' Hi there'));
 console.log(countAndDescribe(['Sports', 'Books']));
-console.log(countAndDescribe(['Sports', 'Books']));
+function extractAndConvert(obj, key) {
+    return "value: " + obj[key];
+}
+console.log(extractAndConvert({ name: 'alex' }, 'name'));
