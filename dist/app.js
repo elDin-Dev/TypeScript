@@ -15,13 +15,19 @@ function Logger(logString) {
     };
 }
 function WithTemplate(template, hookId) {
-    return function (constructor) {
-        const p = new constructor();
-        const hookEl = document.getElementById(hookId);
-        if (hookEl) {
-            hookEl.innerHTML = template;
-            hookEl.querySelector('h1').textContent = p.name;
-        }
+    console.log("TEMPLATE FACTORY");
+    return function (Originalconstructor) {
+        return class extends Originalconstructor {
+            constructor(..._) {
+                super();
+                console.log('Rendering template...');
+                const hookEl = document.getElementById(hookId);
+                if (hookEl) {
+                    hookEl.innerHTML = template;
+                    hookEl.querySelector('h1').textContent = this.name;
+                }
+            }
+        };
     };
 }
 let Person = class Person {

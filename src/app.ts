@@ -7,14 +7,24 @@ function Logger(logString: string) {
     }
 }
 function WithTemplate(template: string, hookId : string) {
-    return function(constructor: any){
+    console.log("TEMPLATE FACTORY");
+    return function<T extends { new(...args: any[]): {name: string}  } >(Originalconstructor: T){
+        return class extends Originalconstructor{
+            constructor(..._: any[]) {
+                super();
 
-        const p = new constructor();
-        const hookEl = document.getElementById(hookId);
-        if (hookEl){
-            
-            hookEl.innerHTML=template
-            hookEl.querySelector('h1')!.textContent=p.name;
+
+                console.log('Rendering template...');
+                const hookEl = document.getElementById(hookId);
+                
+                if (hookEl){
+                    
+                    hookEl.innerHTML=template
+                    hookEl.querySelector('h1')!.textContent=this.name;
+                }
+        
+
+            }
         }
     }
 }
