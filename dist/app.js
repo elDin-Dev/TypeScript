@@ -29,9 +29,27 @@ var ProjectInput = (function () {
         this.configure();
         this.attach();
     }
+    ProjectInput.prototype.gatherUserInput = function () {
+        var enteredTittle = this.titleInputElement.value;
+        var enteredDescription = this.descriptionInputElement.value;
+        var enteredPeople = this.peopleInputElement.value;
+        if (enteredTittle.trim().length === 0 ||
+            enteredDescription.trim().length === 0 ||
+            enteredPeople.trim().length === 0) {
+            alert('Invalid input');
+            return;
+        }
+        else {
+            return [enteredTittle, enteredDescription, +enteredPeople];
+        }
+    };
     ProjectInput.prototype.submitHandler = function (event) {
         event.preventDefault();
-        console.log(this.titleInputElement.value);
+        var userInput = this.gatherUserInput();
+        if (Array.isArray(userInput)) {
+            var title = userInput[0], desc = userInput[1], people = userInput[2];
+            console.log("title:", title, " desc:", desc, ", people:", people);
+        }
     };
     ProjectInput.prototype.configure = function () {
         this.element.addEventListener('submit', this.submitHandler);
