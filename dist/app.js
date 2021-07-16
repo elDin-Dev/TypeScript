@@ -35,6 +35,27 @@ function autobind(_target, _methodName, descriptor) {
     };
     return adjDescriptor;
 }
+var projectList = (function () {
+    function projectList(type) {
+        this.type = type;
+        this.templateElement = document.getElementById('project-list');
+        this.hostElement = document.getElementById('app');
+        var importedNode = document.importNode(this.templateElement.content, true);
+        this.element = importedNode.firstElementChild;
+        this.element.id = this.type + "-projects";
+        this.attach();
+        this.renderContent();
+    }
+    projectList.prototype.renderContent = function () {
+        var listId = this.type + "-projects-lists";
+        this.element.querySelector('ul').id = listId;
+        this.element.querySelector('h2').textContent = this.type.toUpperCase() + ' PROJECTS';
+    };
+    projectList.prototype.attach = function () {
+        this.hostElement.insertAdjacentElement('beforeend', this.element);
+    };
+    return projectList;
+}());
 var ProjectInput = (function () {
     function ProjectInput() {
         this.templateElement = document.getElementById('project-input');
@@ -77,6 +98,11 @@ var ProjectInput = (function () {
             return [enteredTittle, enteredDescription, +enteredPeople];
         }
     };
+    ProjectInput.prototype.clearInputs = function () {
+        this.titleInputElement.value = '';
+        this.descriptionInputElement.value = '';
+        this.peopleInputElement.value = '';
+    };
     ProjectInput.prototype.submitHandler = function (event) {
         event.preventDefault();
         var userInput = this.gatherUserInput();
@@ -84,6 +110,7 @@ var ProjectInput = (function () {
             var title = userInput[0], desc = userInput[1], people = userInput[2];
             console.log("title:", title, " desc:", desc, ", people:", people);
         }
+        this.clearInputs();
     };
     ProjectInput.prototype.configure = function () {
         this.element.addEventListener('submit', this.submitHandler);
@@ -97,3 +124,5 @@ var ProjectInput = (function () {
     return ProjectInput;
 }());
 var prjInput = new ProjectInput();
+var activePrjList = new projectList('active');
+var finishedPrjList = new projectList('finished');
